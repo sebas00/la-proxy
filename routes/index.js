@@ -16,14 +16,12 @@ router.get('/', function(req, res, next) {
   
 request(options, (err, response, body) => {
   if (err) { return console.log(err); }
-  console.log(body);
-  console.log(body.explanation);
-  //res.json(body);
+  
   var rets = JSON.parse(body);
   console.log('stats', rets.messages[0].message.results[0].isAvailable);
   var retstatus = 'UNAVAILABLE';
   if(rets.messages[0].message.results[0].isAvailable){retstatus = 'AVAILABLE'};
-  //res.type('json');
+  
   res.send(retstatus);
 });
  
